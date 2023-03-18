@@ -34,8 +34,8 @@ class UsuarioController extends Controller
     {
         $usuario = array();
         $usuario['id'] = $_POST['id'];
-        $usuario['nome'] = $_POST['nome'];
-        $usuario['cep'] = $_POST['cep'];
+        $usuario['nome'] = $_POST['nome']; 
+        $usuario['cep'] = $_POST['cep']; 
         $usuario['numero_casa'] = $_POST['numero_casa'];
         $usuario['email'] = $_POST['email'];
         $usuario['senha'] = $_POST['senha'];

@@ -35,7 +35,7 @@ abstract class Model
   public function read()
   {
     if ($this->query == "") {
-      $this->query = "SELECT * FROM $this->tabela ORDER BY $this->ordem ";
+      $this->query = "SELECT * FROM $this->tabela ORDER BY $this->ordem";
     }
     $sentenca = $this->conexao->query($this->query);
     $sentenca->setFetchMode(PDO::FETCH_ASSOC);
@@ -75,7 +75,7 @@ abstract class Model
 
   public function getById($id)
   {
-    $sql = "SELECT * FROM $this->tabela WHERE id = :id";
+    $sql = "SELECT * FROM $this->tabela WHERE id = :id"; //2
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->bindParam(":id", $id);
     $sentenca->execute();
