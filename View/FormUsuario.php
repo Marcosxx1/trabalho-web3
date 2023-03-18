@@ -2,7 +2,7 @@
 <form action="<?php echo APP; ?>usuario/salvar" method="post">
   <div class="mb-3">
       <label for="id" class="form-label">ID</label>
-      <input disabled type="text" class="form-control" id="id" value="<?php echo $usuario['id']; ?>" name="id">
+      <input readonly type="text" class="form-control" id="id" value="<?php echo $usuario['id']; ?>" name="id">
   </div>
   <div class="mb-3">
       <label for="nome" class="form-label">Nome</label>
@@ -11,7 +11,7 @@
 
   <div class="mb-3">
       <label for="cep" class="form-label">Cep</label>
-      <input type="text" class="form-control" id="cep" name="cep"><?php echo $usuario['cep']; ?></input>
+      <input type="text" class="form-control" id="cep" name="cep"  value="<?php echo $usuario['cep']; ?>">
   </div>
 
   <div class="mb-3">
