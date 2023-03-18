@@ -18,7 +18,7 @@ abstract class Model
 
   public function create($dados)
   {
-    if (isset($dados['id'])) {
+    if (!isset($dados['id'])) {
       unset($dados['id']);
     }
     $chaves = array_keys($dados);

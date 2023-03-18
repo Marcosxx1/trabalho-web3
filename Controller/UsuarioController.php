@@ -27,7 +27,7 @@ class UsuarioController extends Controller
         $usuario['email'] = "";
         $usuario['senha'] = "";
 
-        $this->view("formUsuario", compact('usuario'));
+        $this->view("FormUsuario", compact('usuario'));
     }
 
     function salvar()
@@ -55,7 +55,7 @@ class UsuarioController extends Controller
         $modelo = new Usuario();
         $usuario = $modelo->getById($id);
 
-        $this->view("formUsuario", compact('usuario'));
+        $this->view("FormUsuario", compact('usuario'));
     }
 
     function excluir($id)
