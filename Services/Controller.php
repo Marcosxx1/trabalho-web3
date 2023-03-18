@@ -1,5 +1,5 @@
 <?php
-abstract class controller
+abstract class Controller
 {
     public function view($visao, $dados)
     {
