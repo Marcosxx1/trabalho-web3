@@ -82,6 +82,5 @@ abstract class Model
     $dados = $sentenca->fetch();
     return $dados;
   }
-
 }
 ?>

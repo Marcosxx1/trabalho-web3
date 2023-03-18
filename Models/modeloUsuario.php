@@ -1,6 +1,6 @@
 <?php
-  class usuario extends Model {
+  class Usuario extends Model {
     protected $tabela="usuario";
-    protected $query = "SELECT usuario.nome, usuario.cep, usuario, usuario.id, usuario.numero, usuario.email FROM usuario";
+    protected $query = "SELECT usuario.nome, usuario.cep, usuario.id, usuario.numero_casa, usuario.email FROM usuario";
   }
  ?>
