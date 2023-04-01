@@ -38,7 +38,7 @@
         </select>
     </div>
 
-    <a class="btn btn-primary mb-2" href="#">Cadastrar fornecedor</a>
+    <a class="btn btn-primary mb-2" href="<?php echo APP; ?>fornecedor/novo">Cadastrar fornecedor</a>
 
     <div class="mb-3">
         <label for="categoria" class="form-label">Categoria</label>
@@ -48,13 +48,13 @@
                 $selected =
                     $categoria['id'] == $produto['categoria_id'] ? 'selected' : '';
 
-                echo "<option $selected value='{$categoria['id']}'>{$categoria['descricao']}</option>";
+                echo "<option $selected value='{$categoria['id']}'>{$categoria['nomecategoria']}</option>";
             }
             ?>
         </select>
     </div>
 
-    <a class="btn btn-primary mb-4" href="#">Cadastrar categoria</a>
+    <a class="btn btn-primary mb-4" href="<?php echo APP; ?>categoria/novo">Cadastrar categoria</a>
 
     <br>
 

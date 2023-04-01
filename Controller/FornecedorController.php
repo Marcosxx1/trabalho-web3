@@ -23,16 +23,18 @@ class FornecedorController extends Controller
     {
         $fornecedor = array();
         $fornecedor['id'] = $this->idAtual();
-        $fornecedor['nome'] = "";
+        $fornecedor['nomeFornecedor'] = "";
+        $fornecedor['cnpj'] = "";
 
-        $this->view("FormFornecedor", compact('fornecedor'));
+        $this->view("formFornecedor", compact('fornecedor'));
     }
 
     function salvar()
     {
         $fornecedor = array();
         $fornecedor['id'] = $_POST['id'];
-        $fornecedor['nome'] = $_POST['nome'];
+        $fornecedor['nomeFornecedor'] = $_POST['nomeFornecedor'];
+        $fornecedor['cnpj'] = $_POST['cnpj'];
 
         $modelo = new Fornecedor();
         if ($fornecedor['id'] == $this->idAtual()) {
@@ -41,7 +43,7 @@ class FornecedorController extends Controller
             $modelo->update($fornecedor);
         }
 
-        $this->redirect('fornecedor/listar');
+        $this->redirect('produto/listar');
     }
 
     function editar($id)
@@ -49,7 +51,7 @@ class FornecedorController extends Controller
         $modelo = new Fornecedor();
         $fornecedor = $modelo->getById($id);
 
-        $this->view("FormFornecedor", compact('fornecedor'));
+        $this->view("formFornecedor", compact('fornecedor'));
     }
 
     function excluir($id)

@@ -21,7 +21,7 @@ class CategoriaController extends Controller
     {
         $categoria = array();
         $categoria['id'] = $this->idAtual();
-        $categoria['nome'] = "";
+        $categoria['nomeCategoria'] = "";
         $categoria['descricao'] = "";
 
         $this->view("formCategoria", compact('categoria'));
@@ -31,17 +31,17 @@ class CategoriaController extends Controller
     {
         $categoria = array();
         $categoria['id'] = $_POST['id'];
-        $categoria['nome'] = $_POST['nome'];
+        $categoria['nomeCategoria'] = $_POST['nomeCategoria'];
         $categoria['descricao'] = $_POST['descricao'];
+        
         $modelo = new Categoria();
-
         if ($categoria['id'] == $this->idAtual()) {
             $modelo->create($categoria);
         } else {
             $modelo->update($categoria);
         }
         
-        $this->redirect('categoria/listar');
+        $this->redirect('produto/listar');
     }
 
     public function editar($id)
