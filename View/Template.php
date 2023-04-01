@@ -12,14 +12,10 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-static/">
   <script src="https://kit.fontawesome.com/949dcd6b8d.js" crossorigin="anonymous"></script>
 
-
-
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
   <meta name="theme-color" content="#712cf9">
-
 
   <style>
     .bd-placeholder-img {
@@ -77,13 +73,15 @@
       min-height: 75rem;
     }
   </style>
-
-
 </head>
 
 <body>
+  <?php
+  require_once "./functions.php";
+  require_once "Components/nav.php";
 
-  <?php require_once "Components/nav.php"; ?>
+  //dd($_SERVER);
+  ?>
 
   <main class="container">
     <div class="bg-light p-5 rounded">
@@ -98,8 +96,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>

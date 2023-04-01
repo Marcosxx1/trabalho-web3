@@ -1,5 +1,5 @@
 <?php
-class fornecedor extends Model
+class Fornecedor extends Model
 {
     protected $tabela = "fornecedor";
     protected $query = "SELECT fornecedor.id, fornecedor.nome FROM fornecedor";

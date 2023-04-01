@@ -11,7 +11,7 @@
             <a class="nav-link active" aria-current="page" href="<?php echo APP . 'usuario/listar' ?>">Usuario</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Link</a>
+            <a class="nav-link text-white" href="<?php echo APP . 'produto/listar' ?>">Produto</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
