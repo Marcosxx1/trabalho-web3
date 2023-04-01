@@ -8,18 +8,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav nav-tabs me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?php echo APP . 'usuario/listar' ?>">Usuario</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="<?php echo APP . 'produto/listar' ?>">Produto</a>
+            <a class="nav-link active" aria-current="page" href="<?php echo APP ;?>">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="<?php echo APP . 'usuario/listar'; ?>">Usuário</a></li>
+              <li><a class="dropdown-item" href="<?php echo APP . 'produto/listar' ?>">Produto</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

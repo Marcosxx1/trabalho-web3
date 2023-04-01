@@ -1,4 +1,4 @@
-<h1>Cadastro de Notícia</h1>
+<h1>Cadastro de Usuário</h1>
 <form action="<?php echo APP; ?>usuario/salvar" method="post">
   <div class="mb-3">
       <label for="id" class="form-label">ID</label>

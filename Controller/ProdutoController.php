@@ -23,10 +23,16 @@ class ProdutoController extends Controller
         $produto = array();
         $produto['id'] = $this->idAtual();
         $produto['nome'] = "";
+        $produto['quantidade'] = 0;
         $produto['preco'] = "";
-        $produto['descricao'] = "";
 
-        $this->view("formProduto", compact('produto'));
+        $fornecedorClass = new Fornecedor();
+        $fornecedores = $fornecedorClass->read();
+
+        $categoriaClass = new Categoria();
+        $categorias = $categoriaClass->read();
+
+        $this->view("formProduto", compact('produto', 'categorias', 'fornecedores'));
     }
 
     function salvar()
@@ -34,8 +40,10 @@ class ProdutoController extends Controller
         $produto = array();
         $produto['id'] = $_POST['id'];
         $produto['nome'] = $_POST['nome']; 
-        $produto['preco'] = $_POST['preco']; 
-        $produto['descricao'] = $_POST['descricao'];
+        $produto['quantidade'] = $_POST['quantidade'];
+        $produto['preco'] = $_POST['preco'];
+        $produto['fornecedor_id'] = $_POST['fornecedor_id'];
+        $produto['categoria_id'] = $_POST['categoria_id'];
 
         $modelo = new Produto();
         if ($produto['id'] == $this->idAtual()) {
@@ -51,8 +59,14 @@ class ProdutoController extends Controller
     {
         $modelo = new Produto();
         $produto = $modelo->getById($id);
+        
+        $fornecedorClass = new Fornecedor();
+        $fornecedores = $fornecedorClass->read();
 
-        $this->view("formProduto", compact('produto'));
+        $categoriaClass = new Categoria();
+        $categorias = $categoriaClass->read();
+
+        $this->view("formProduto", compact('produto', 'categorias', 'fornecedores'));
     }
 
     function excluir($id)

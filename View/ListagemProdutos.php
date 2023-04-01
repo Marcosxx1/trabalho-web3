@@ -6,7 +6,7 @@
       <th>ID</th>
       <th>Nome</th>
       <th>Quantidade</th>
-      <th>Preco</th>
+      <th>Preco Unitário</th>
       <th>Fornecedor</th>
       <th>Categoria</th>
       <th>Editar</th>
@@ -16,7 +16,6 @@
 
   <tbody>
     <?php
-    dd($produtos);
       foreach ($produtos as $produto) {
           echo "
           <tr>

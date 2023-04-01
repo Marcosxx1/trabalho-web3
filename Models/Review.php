@@ -1,5 +1,5 @@
 <?php
-class review extends Model
+class Review extends Model
 {
     protected $tabela = "review";
     protected $query = "SELECT review.*, usuario.nome, produto.nome
