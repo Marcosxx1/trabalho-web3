@@ -1,6 +1,5 @@
-<h1>Listagem de Usuários</h1>
-<a class="btn btn-primary mb-2" href="<?php echo APP; ?>usuario/novo">Novo</a>
-<table class="table table-striped table-hover table-bordered">
+<h1 class="text-center mb-5">Listagem de Usuários</h1>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -30,3 +29,5 @@
      ?>
   </tbody>
 </table>
+
+<a class="btn btn-primary mb-2" href="<?php echo APP; ?>usuario/novo">Novo</a>
