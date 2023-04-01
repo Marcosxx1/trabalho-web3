@@ -60,5 +60,19 @@ class PedidoController extends Controller
 
         $this->redirect('pedido/listar');
     }
+
+    function carrinho($id)
+    {
+        $modelo = new Produto();
+        $produto = $modelo->getById($id);
+
+        $fornecedorClass = new Fornecedor();
+        $fornecedores = $fornecedorClass->read();
+
+        $categoriaClass = new Categoria();
+        $categorias = $categoriaClass->read();
+
+        $this->view("indexPedidos", compact('produto', 'fornecedores', 'categorias'));
+    }
 }
 ?>

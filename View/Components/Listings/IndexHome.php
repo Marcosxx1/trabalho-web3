@@ -1,6 +1,6 @@
 <?php dd($reviwes) ?>
 
-<h1 class="text-center"><i class="fa-solid fa-paw"></i> Produtos para o seu pet <i class="fa-solid fa-paw"></i></h1>
+<h1 class="text-center mb-5"><i class="fa-solid fa-paw"></i> Produtos para o seu pet <i class="fa-solid fa-paw"></i></h1>
 
 <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -45,7 +45,7 @@
                     <div class='card-body'>
                         <h5 class='card-title'>" . $produto['nome'] . "</h5>
                         <p class='card-text'>Preço: R$" . $produto['preco'] . "</p>
-                        <a href='#' class='btn btn-primary'>Ver produto</a>
+                        <a href=indexProduto/infos/" . $produto['id'] ." class='btn btn-primary'>Ver produto</a>
                     </div>
                 </div>
             </div>

@@ -73,6 +73,9 @@
       min-height: 75rem;
     }
 
+   .star {
+    cursor: pointer;
+   }
   </style>
 </head>
 

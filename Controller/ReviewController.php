@@ -31,6 +31,7 @@ class ReviewController extends Controller
         $review = array();
         $review['id'] = $_POST['id'];
         $review['avaliacao'] = $_POST['avaliacao'];
+        $review['descricao'] = $_POST['descricao'];
 
         $modelo = new Review();
         if ($review['id'] == $this->idAtual()) {
