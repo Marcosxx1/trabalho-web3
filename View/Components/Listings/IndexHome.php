@@ -1,3 +1,5 @@
+<?php dd($reviwes) ?>
+
 <h1 class="text-center"><i class="fa-solid fa-paw"></i> Produtos para o seu pet <i class="fa-solid fa-paw"></i></h1>
 
 <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel">
@@ -37,13 +39,13 @@
             echo '<div class="row">';
         }
         echo "
-            <div class='col-sm-6 col-md-3 mb-3'>
+            <div class='col-sm-6 col-md-3 mb-3 text-center'>
                 <div class='card'>
                     <img src='" . $produto['img'] . "' class='card-img-top' alt='Imagem do produto'>
                     <div class='card-body'>
                         <h5 class='card-title'>" . $produto['nome'] . "</h5>
                         <p class='card-text'>Preço: R$" . $produto['preco'] . "</p>
-                        <a href='#' class='btn btn-primary'>Comprar</a>
+                        <a href='#' class='btn btn-primary'>Ver produto</a>
                     </div>
                 </div>
             </div>

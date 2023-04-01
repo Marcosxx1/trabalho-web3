@@ -6,7 +6,10 @@ class IndexController extends Controller
         $modelo = new Produto();
         $produtos = $modelo->read();
 
-        $this->view('indexHome', compact('produtos'));
+        $review = new Review();
+        $reviews = $review->read();
+
+        $this->view('indexHome', compact('produtos', 'reviews'));
     }
 }
 ?>

@@ -5,7 +5,11 @@ abstract class Controller
     {
         extract($dados);
 
-        $arquivo = "View/$visao.php";
+        if (substr($visao, 0, 4) == "form") {
+            $arquivo = "View/Components/Forms/$visao.php";
+        } else {
+            $arquivo = "View/Components/Listings/$visao.php";
+        }
 
         require_once "View/Template.php";
     }
