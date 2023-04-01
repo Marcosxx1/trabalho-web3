@@ -22,6 +22,7 @@ class ProdutoController extends Controller
     {
         $produto = array();
         $produto['id'] = $this->idAtual();
+        $produto['img'] = "";
         $produto['nome'] = "";
         $produto['quantidade'] = 0;
         $produto['preco'] = "";
@@ -39,6 +40,7 @@ class ProdutoController extends Controller
     {
         $produto = array();
         $produto['id'] = $_POST['id'];
+        $produto['img'] = $_POST['img'];
         $produto['nome'] = $_POST['nome']; 
         $produto['quantidade'] = $_POST['quantidade'];
         $produto['preco'] = $_POST['preco'];

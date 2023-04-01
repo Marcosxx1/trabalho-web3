@@ -5,6 +5,10 @@
         <input readonly type="text" class="form-control" id="id" value="<?php echo $produto['id']; ?>" name="id">
     </div>
     <div class="mb-3">
+        <label for="img" class="form-label">Imagem</label>
+        <input type="text" class="form-control" id="img" value="<?php echo $produto['img']; ?>" name="img">
+    </div>
+    <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" id="nome" value="<?php echo $produto['nome']; ?>" name="nome">
     </div>
