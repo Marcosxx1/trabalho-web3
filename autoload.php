@@ -2,9 +2,9 @@
 
   function autoload($class_name) {
     $dirs = array(
-              'models/',
-              'controllers/',
-              'system/',
+              'Models/',
+              'Controller/',
+              'Services/',
           );
 
         foreach( $dirs as $dir ) {

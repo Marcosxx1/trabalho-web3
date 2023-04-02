@@ -1,13 +1,17 @@
 <?php
-abstract class controller
+abstract class Controller
 {
     public function view($visao, $dados)
     {
         extract($dados);
 
-        $arquivo = "views/$visao.php";
+        if (substr($visao, 0, 4) == "form") {
+            $arquivo = "View/Components/Forms/$visao.php";
+        } else {
+            $arquivo = "View/Components/Listings/$visao.php";
+        }
 
-        require_once "views/template.php";
+        require_once "View/Template.php";
     }
 
     public function redirect($visao)
