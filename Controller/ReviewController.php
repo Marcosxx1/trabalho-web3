@@ -29,9 +29,11 @@ class ReviewController extends Controller
     function salvar()
     {
         $review = array();
-        $review['id'] = $_POST['id'];
+        $review['id'] = $this->idAtual() - 1;
         $review['avaliacao'] = $_POST['avaliacao'];
         $review['descricao'] = $_POST['descricao'];
+        $review['produto_id'] = $_POST['produto_id'];
+        // $review['usuario_id'] = $_POST['usuario_id'];
 
         $modelo = new Review();
         if ($review['id'] == $this->idAtual()) {
@@ -40,7 +42,7 @@ class ReviewController extends Controller
             $modelo->update($review);
         }
 
-        $this->redirect('review/listar');
+        $this->redirect('');
     }
 
     function editar($id)
