@@ -71,9 +71,10 @@
 
     body {
       min-height: 75rem;
+      background-color: #303030;
     }
 
-   .star {
+   i[value] {
     cursor: pointer;
    }
   </style>

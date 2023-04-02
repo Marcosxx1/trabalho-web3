@@ -82,5 +82,15 @@ abstract class Model
     $dados = $sentenca->fetch();
     return $dados;
   }
+
+  function search()
+  {
+    $sql = "SELECT * FROM $this->tabela where nome ilike '%'";
+
+    $sentenca = $this->conexao->prepare($sql);
+    $sentenca->execute();
+    $dados = $sentenca->fetch();
+    return $dados;
+  }
 }
 ?>

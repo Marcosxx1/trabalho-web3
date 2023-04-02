@@ -1,3 +1,12 @@
+<?php
+$soma = 0;
+for ($i = 0; $i < count($reviews); $i++) {
+    $soma += $reviews[$i]['avaliacao'];
+}
+
+$media = intval($soma / count($reviews));
+?>
+
 <div class="card mb-3" style="width: 100%; height: 700px">
     <div class="row g-0">
         <div class="col-md-4">
@@ -10,23 +19,30 @@
                 </h2>
 
                 <?php
-                foreach ($fornecedores as $fornecedor) {
-                    if ($fornecedor['id'] == $produto["fornecedor_id"]) {
-                        echo '<h5>' . $fornecedor['nomefornecedor'] . '</h5>';
+
+                for ($i = 0; $i < 5; $i++) {
+                    if ($i >= $media) {
+                        echo "<i class='fa-regular fa-star fs-6 star'></i>";
+                    } else {
+                        echo "<i class='fa-solid fa-star fs-6 star'></i>";
                     }
                 }
-                ?>
 
-                <?php
+                foreach ($fornecedores as $fornecedor) {
+                    if ($fornecedor['id'] == $produto["fornecedor_id"]) {
+                        echo '<h5 class="mt-3 mb-3"> Marca: ' . $fornecedor['nomefornecedor'] . '</h5>';
+                    }
+                }
+
                 foreach ($categorias as $categoria) {
                     if ($categoria['id'] == $produto["categoria_id"]) {
-                        echo '<h5>' . $categoria['nomecategoria'] . '</h5>';
+                        echo '<h5> Categoria: ' . $categoria['nomecategoria'] . '</h5>';
                     }
                 }
                 ?>
 
                 <a href='http://localhost/trabalho-web3/pedido/carrinho/<?php echo $produto['id'] ?>' type="button"
-                    class="btn btn-success" style="margin: 20% 0 0 35%">Comprar</a>
+                    class="btn btn-dark" style="margin: 20% 0 0 35%">Comprar</a>
             </div>
         </div>
 
@@ -60,18 +76,18 @@
         <input type="hidden" id="produto_id" name="produto_id" value='<?php echo $produto['id']; ?>'>
         <!-- <input type="hidden" id="usuario_id" name="usuario_id" value=''> -->
 
-        <button class="btn btn-primary ms-3" type="submit" name="button">Salvar</button>
+        <button class="btn btn-dark ms-3" type="submit" name="button">Salvar</button>
     </form>
 </div>
 
 <script>
-    let regularStar = document.querySelectorAll('.fa-star');
+    let regularStar = document.querySelectorAll('i[value]');
     let inputAvalicao = document.querySelector('#avaliacao');
-    
+
     let state = 0;
     regularStar.forEach((star) => {
         star.addEventListener('click', function () {
-            if (star.getAttribute('value') < state) {
+            if (star.getAttribute('value') < parseInt(state)) {
                 for (let i = 0; i < regularStar.length; i++) {
                     regularStar[i].classList.remove('fa-solid');
                 }

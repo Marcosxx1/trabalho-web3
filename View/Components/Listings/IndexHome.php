@@ -17,6 +17,9 @@
         <div class="carousel-item">
             <img src="./images/b.jpg" class="d-block w-100" alt="...">
         </div>
+        <div class="carousel-item">
+            <img src="./images/c.jpg" class="d-block w-100" alt="...">
+        </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
         data-bs-slide="prev">
@@ -35,8 +38,8 @@
     $i = 0;
 
     $soma = 0;
-    for ($i = 0; $i < count($reviews); $i++) {
-        $soma += $reviews[$i]['avaliacao'];
+    for ($f = 0; $f < count($reviews); $f++) {
+        $soma += $reviews[$f]['avaliacao'];
     }
 
     $media = intval($soma / count($reviews));
@@ -65,7 +68,7 @@
             <div class='card-body'>
                 <h5 class='card-title'>" . $produto['nome'] . "</h5>
                 <p class='card-text'>Preço: R$" . $produto['preco'] . "</p>
-                <a href=indexProduto/infos/" . $produto['id'] . " class='btn btn-primary'>Ver produto</a>
+                <a href=indexProduto/infos/" . $produto['id'] . " class='btn btn-dark'>Ver produto</a>
             </div>
         </div>
     </div>
