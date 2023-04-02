@@ -59,7 +59,7 @@
             if ($i >= $media) {
                 echo "<i class='fa-regular fa-star fs-6 star'></i>";
             } else {
-                echo "<i class='fa-solid fa-star fs-6 star'></i>";
+                echo "<i class='fa-solid fa-star' style='color: #ecdb18;'></i>";
             }
         }
 
