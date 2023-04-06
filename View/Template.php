@@ -70,13 +70,13 @@
     }
 
     body {
-      min-height: 75rem;
+
       background-color: #303030;
     }
 
-   i[value] {
-    cursor: pointer;
-   }
+    i[value] {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -88,7 +88,7 @@
   //dd($_SERVER);
   ?>
 
-  <main class="container">
+  <main class="container mt-4 mb-4">
     <div class="bg-light p-5 rounded">
       <?php
       require_once $arquivo;

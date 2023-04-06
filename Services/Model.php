@@ -83,9 +83,9 @@ abstract class Model
     return $dados;
   }
 
-  function search()
+  function search($nome)
   {
-    $sql = "SELECT * FROM $this->tabela where nome ilike '%'";
+    $sql = "SELECT * FROM produto where nome ilike '%$nome%'";
 
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->execute();

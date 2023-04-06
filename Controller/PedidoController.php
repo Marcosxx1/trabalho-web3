@@ -18,31 +18,31 @@ class PedidoController extends Controller
         return count($dado) + 1;
     }
 
-    function novo()
+    function novo($id, $bool)
     {
-        $pedido = array();
-        $pedido['id'] = $this->idAtual();
-        $pedido['status'] = "";
-        $pedido['data'] = "";
-
-        $this->view("formPedido", compact('pedido'));
-    }
-
-    function salvar()
-    {
-        $pedido = array();
-        $pedido['id'] = $_POST['id'];
-        $pedido['status'] = $_POST['status'];
-        $pedido['data'] = $_POST['data'];
-
-        $modelo = new Pedido();
-        if ($pedido['id'] == $this->idAtual()) {
-            $modelo->create($pedido);
-        } else {
-            $modelo->update($pedido);
+        if ($bool) {
+            $pedido = array();
+            $pedido['id'] = $this->idAtual();
+            $pedido['status'] = "em andamento";
         }
 
-        $this->redirect('pedido/listar');
+        $this->redirect("pedido/salvar/{$id}}");
+    }
+
+    function salvar($id)
+    {
+        $usuario = array();
+        $usuario['id'] = $_POST['id'];
+        $usuario['status'] = $_POST['status'];
+
+
+        $model = new Usuario();
+        if ($usuario['id'] == $this->idAtual()) {
+            $model->create($usuario);
+        } else {
+            $model->update($usuario);
+        }
+        $this->redirect('usuario/listar');
     }
 
     function editar($id)
@@ -61,18 +61,5 @@ class PedidoController extends Controller
         $this->redirect('pedido/listar');
     }
 
-    function carrinho($id)
-    {
-        $modelo = new Produto();
-        $produto = $modelo->getById($id);
-
-        $fornecedorClass = new Fornecedor();
-        $fornecedores = $fornecedorClass->read();
-
-        $categoriaClass = new Categoria();
-        $categorias = $categoriaClass->read();
-
-        $this->view("indexPedidos", compact('produto', 'fornecedores', 'categorias'));
-    }
 }
 ?>

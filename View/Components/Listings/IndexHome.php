@@ -4,15 +4,22 @@
 <div class="d-flex flex-wrap">
     <?php
     $i = 0;
-
-    $soma = 0;
-    for ($f = 0; $f < count($reviews); $f++) {
-        $soma += $reviews[$f]['avaliacao'];
-    }
-
-    $media = intval($soma / count($reviews));
-
+    
     foreach ($produtos as $produto) {
+        $soma = 0;
+
+        foreach ($reviews as $review) {
+            if ($review['produto_id'] == $produto["id"]) {
+                $soma = 0;
+                for ($i = 0; $i < count($reviews); $i++) {
+                    $soma += $reviews[$i]['avaliacao'];
+                }
+
+            }
+        }
+
+        $media = intval($soma / count($reviews));
+
         if ($i % 4 == 0) {
             echo '<div class="row">';
         }

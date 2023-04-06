@@ -1,10 +1,18 @@
 <?php
 $soma = 0;
-for ($i = 0; $i < count($reviews); $i++) {
-    $soma += $reviews[$i]['avaliacao'];
+
+foreach ($reviews as $review) {
+    if ($review['produto_id'] == $produto["id"]) {
+        $soma = 0;
+        for ($i = 0; $i < count($reviews); $i++) {
+            $soma += $reviews[$i]['avaliacao'];
+        }
+
+    }
 }
 
 $media = intval($soma / count($reviews));
+
 ?>
 
 <div class="card mb-3" style="width: 100%;">
@@ -49,8 +57,10 @@ $media = intval($soma / count($reviews));
                 }
                 ?>
 
-                <a href='http://localhost/trabalho-web3/pedido/carrinho/<?php echo $produto['id'] ?>' type="button"
-                    class="btn btn-dark" style="margin: 20% 0 0 35%">Comprar</a>
+                <button type="button" class="btn btn-dark" id="carrinho" style="margin: 20% 0 0 25%">Adicionar no
+                    Carrinho</button>
+
+                <a href='<?php echo APP ?>' class='btn btn-dark' style="margin: 20% 0 0 0">voltar</a>
             </div>
         </div>
 
@@ -61,32 +71,36 @@ $media = intval($soma / count($reviews));
 
     <h3 class='ms-4 mt-2 mb-2'>Comentarios: </h3>
     <?php
+    //dd($reviews);
+    
     foreach ($reviews as $review) {
+        $data = date("d/m/Y", strtotime($review['data']));
         if ($produto['id'] == $review["produto_id"]) {
             echo '
             <div class="m-5 p-3 border border-secondary-subtle">
                 <div class="d-flex ms-3">
-                <h6 class="me-3">Nome Usuário</h6>';
+                <i class="fa-solid fa-circle-user fs-1 mt-1 me-3 mb-3"></i>
+                <h6 class="me-1 mt-3">Nome Usuário - </h6>';
             for ($i = 0; $i < 5; $i++) {
                 if ($i >= $review['avaliacao']) {
-                    echo "<i class='fa-regular fa-star fs-6 star style='color: #d7bd14;'></i>";
+                    echo "<i class='fa-regular fa-star fs-6 star' style='margin-top: 2.2%'></i>";
                 } else {
-                    echo "<i class='fa-solid fa-star' style='color: #ecdb18;'></i>";
+                    echo "<i class='fa-solid fa-star' style='color: #ecdb18; margin-top: 2.2%'></i>";
                 }
             }
-
-            echo '</div>
-            <h5 class="ms-3">' . $review['descricao'] . '</h5>
+            echo '<h6 class="ms-2" style="font-size: 10px; margin-top: 2.5%">' . $data . '</h6>
+            </div>
+            <h5 class="ms-5"> "' . $review['descricao'] . '"</h5>
             </div>
             ';
         }
     }
     ?>
 
-
-
-
     <form action="<?php echo APP; ?>review/salvar" method="post">
+
+        <input type="hidden" class="form-control" id="id" name="id" value='<?php echo count($reviews) + 1; ?>'>
+
         <h5 class='ms-4'>
             Avaliação:
             <?php
@@ -104,15 +118,17 @@ $media = intval($soma / count($reviews));
         </div>
 
         <input type="hidden" id="produto_id" name="produto_id" value='<?php echo $produto['id']; ?>'>
-        <!-- <input type="hidden" id="usuario_id" name="usuario_id" value=''> -->
+        <input type="hidden" id="usuario_id" name="usuario_id" value='<?php echo $usuarios[0]['id']; ?>'>
 
         <button class="btn btn-dark ms-3 mb-3" type="submit" name="button">Salvar</button>
     </form>
 </div>
 
+
 <script>
     let regularStar = document.querySelectorAll('i[value]');
     let inputAvalicao = document.querySelector('#avaliacao');
+    let addCarrinho = document.querySelector('#carrinho');
 
     let state = 0;
     regularStar.forEach((star) => {
@@ -133,4 +149,42 @@ $media = intval($soma / count($reviews));
             inputAvalicao.value = parseInt(state) + 1;
         });
     });
+
+
+    let arrProduto = getProdutos();
+
+    function getProdutos() {
+        let produtoData = localStorage.getItem("Carrinho");
+        produtoData = JSON.parse(produtoData);
+
+        return produtoData && produtoData.length ? produtoData : [];
+    }
+
+    addCarrinho.addEventListener('click', function () {
+        let produto = {
+            imagem: "<?php echo $produto['img'] ?>",
+            nome: "<?php echo $produto['nome'] ?>",
+            preco: "<?php echo $produto['preco'] ?>"
+        };
+
+        addProduto(produto);
+
+        window.location.href = "<?php echo APP; ?>indexPedido/listar"
+    });
+
+
+    function addProduto(produto) {
+        arrProduto.push({
+            quantidade: 1,
+            imagem: produto.imagem,
+            nome: produto.nome,
+            preco: produto.preco
+        });
+
+        setProdutos();
+    }
+
+    function setProdutos() {
+        localStorage.setItem("Carrinho", JSON.stringify(arrProduto));
+    }
 </script>

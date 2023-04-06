@@ -15,13 +15,18 @@ class IndexProdutoController extends Controller
         $categoriaClass = new Categoria();
         $categorias = $categoriaClass->read();
 
-        $this->view("indexProduto", compact('produto', 'reviews', 'fornecedores', 'categorias'));
+        $modelo = new Usuario();
+        $usuarios = $modelo->read();
+
+        $this->view("indexProduto", compact('produto', 'reviews', 'fornecedores', 'categorias', 'usuarios'));
     }
 
     function search()
     {
+        $nome = $_POST['search'];
+
         $modelo = new Produto();
-        $produto = $modelo->search();
+        $produto = $modelo->search($nome);
 
         $reviewsClass = new Review();
         $reviews = $reviewsClass->read();
