@@ -21,11 +21,10 @@ class ProdutoController extends Controller
     function novo()
     {
         $produto = array();
-        $produto['id'] = $this->idAtual();
-        $produto['img'] = "";
-        $produto['nome'] = "";
-        $produto['quantidade'] = 0;
-        $produto['preco'] = "";
+        $produto[0]['id'] = $this->idAtual();
+        $produto[0]['img'] = "";
+        $produto[0]['nome'] = "";
+        $produto[0]['preco'] = "";
 
         $fornecedorClass = new Fornecedor();
         $fornecedores = $fornecedorClass->read();
@@ -41,8 +40,7 @@ class ProdutoController extends Controller
         $produto = array();
         $produto['id'] = $_POST['id'];
         $produto['img'] = $_POST['img'];
-        $produto['nome'] = $_POST['nome']; 
-        $produto['quantidade'] = $_POST['quantidade'];
+        $produto['nome'] = $_POST['nome'];
         $produto['preco'] = $_POST['preco'];
         $produto['fornecedor_id'] = $_POST['fornecedor_id'];
         $produto['categoria_id'] = $_POST['categoria_id'];

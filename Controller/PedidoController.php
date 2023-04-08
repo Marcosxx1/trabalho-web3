@@ -7,7 +7,10 @@ class PedidoController extends Controller
         $modelo = new Pedido();
         $pedidos = $modelo->read();
 
-        $this->view('ListagemPedidos', compact('pedidos'));
+        $modelo = new Usuario();
+        $usuarios = $modelo->read();
+
+        $this->view('ListagemPedidos', compact('pedidos', 'usuarios'));
     }
 
     function idAtual()
@@ -18,31 +21,41 @@ class PedidoController extends Controller
         return count($dado) + 1;
     }
 
-    function novo($id, $bool)
+    function idUsuario()
     {
-        if ($bool) {
-            $pedido = array();
-            $pedido['id'] = $this->idAtual();
-            $pedido['status'] = "em andamento";
-        }
+        $modelo = new Usuario();
+        $usuarios = $modelo->read();
 
-        $this->redirect("pedido/salvar/{$id}}");
+        return rand(1, count($usuarios));
     }
 
-    function salvar($id)
+    function novo()
     {
-        $usuario = array();
-        $usuario['id'] = $_POST['id'];
-        $usuario['status'] = $_POST['status'];
+        $pedido = array();
+        $pedido['id'] = $this->idAtual();
+        $pedido['status'] = "em andamento";
+        $pedido['usuario_id'] = $this->idUsuario();
+        $pedido['pedidos'] = $_POST['pedidos'];
 
+        $model = new Pedido();
+        $model->create($pedido);
 
-        $model = new Usuario();
-        if ($usuario['id'] == $this->idAtual()) {
-            $model->create($usuario);
-        } else {
-            $model->update($usuario);
-        }
-        $this->redirect('usuario/listar');
+        header('location: http://localhost/trabalho-web3/');
+        //$this->redirect('');
+    }
+
+    function salvar()
+    {
+        $pedido = array();
+        $pedido['id'] = $_POST['id'];
+        $pedido['status'] = $_POST['status'];
+        $pedido['usuario_id'] = $_POST['usuario_id'];
+        $pedido['pedidos'] = $_POST['pedidos'];
+
+        $model = new Pedido();
+        $model->update($pedido);
+
+        $this->redirect('pedido/listar');
     }
 
     function editar($id)
@@ -50,7 +63,13 @@ class PedidoController extends Controller
         $modelo = new Pedido();
         $pedido = $modelo->getById($id);
 
-        $this->view("formPedido", compact('pedido'));
+        $modelo = new Usuario();
+        $usuarios = $modelo->read();
+
+        $modelo = new Produto();
+        $produtos = $modelo->read();
+
+        $this->view("formPedido", compact('pedido', 'usuarios', 'produtos'));
     }
 
     function excluir($id)

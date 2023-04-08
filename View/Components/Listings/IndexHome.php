@@ -1,10 +1,9 @@
-<?php require './View/Components/carousel.php' ?>
-
+<?php require_once './View/Components/carousel.php' ?>
 
 <div class="d-flex flex-wrap">
     <?php
     $i = 0;
-    
+
     foreach ($produtos as $produto) {
         $soma = 0;
 
@@ -18,23 +17,28 @@
             }
         }
 
-        $media = intval($soma / count($reviews));
-
-        if ($i % 4 == 0) {
-            echo '<div class="row">';
+        if (count($reviews) > 0) {
+            $media = intval($soma / count($reviews));
         }
+
         echo "
     <div class='col-sm-6 col-md-3 mb-3 text-center'>
-        <div class='card'>
+        <div class='card' style='margin-right: 10px; margin-bottom: 10px;'>
             <img src='" . $produto['img'] . "' class='card-img-top' alt='Imagem do produto'>
         <div class='d-flex mt-2' style='margin: 0 0 0 30%'>
             ";
 
-        for ($i = 0; $i < 5; $i++) {
-            if ($i >= $media) {
+        if (isset($media)) {
+            for ($i = 0; $i < 5; $i++) {
+                if ($i >= $media) {
+                    echo "<i class='fa-regular fa-star fs-6 star'></i>";
+                } else {
+                    echo "<i class='fa-solid fa-star' style='color: #ecdb18;'></i>";
+                }
+            }
+        } else {
+            for ($i = 0; $i < 5; $i++) {
                 echo "<i class='fa-regular fa-star fs-6 star'></i>";
-            } else {
-                echo "<i class='fa-solid fa-star' style='color: #ecdb18;'></i>";
             }
         }
 

@@ -17,17 +17,26 @@ class ReviewController extends Controller
         return count($dado) + 1;
     }
 
+    function idUsuario()
+    {
+        $modelo = new Usuario();
+        $usuarios = $modelo->read();
+
+        return rand(1, count($usuarios));
+    }
+
     function novo()
     {
         $review = array();
         $review['id'] = $this->idAtual();
         $review['avaliacao'] = "";
-        $review['usuario_id'] = 1;
+        $review['descricao'] = "";
+        $review['usuario_id'] = $this->idUsuario();
 
         $this->view("formReview", compact('review'));
     }
 
-    function salvar()
+    function salvar($id)
     {
         $review = array();
         $review['id'] = $_POST['id'];
@@ -43,7 +52,7 @@ class ReviewController extends Controller
             $modelo->update($review);
         }
 
-        $this->redirect('');
+        $this->redirect("indexProduto/infos/{$id}");
     }
 
     function editar($id)
@@ -59,7 +68,7 @@ class ReviewController extends Controller
         $modelo = new Review();
         $modelo->delete($id);
 
-        $this->redirect('review/listar');
+        $this->redirect("");
     }
 }
 ?>

@@ -5,7 +5,6 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Quantidade</th>
       <th>Preco Unitário</th>
       <th>Fornecedor</th>
       <th>Categoria</th>
@@ -21,7 +20,6 @@
           <tr>
             <td>{$produto['id']}</td>
             <td>{$produto['nome']}</td>
-            <td>{$produto['quantidade']}</td>
             <td>{$produto['preco']}</td>
             <td>{$produto['nomefornecedor']}</td>
             <td>{$produto['nomecategoria']}</td>

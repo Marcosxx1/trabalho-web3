@@ -18,7 +18,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<?php echo APP . 'usuario/listar'; ?>">Usuários</a></li>
             <li><a class="dropdown-item" href="<?php echo APP . 'produto/listar' ?>">Produtos</a></li>
-            <li><a class="dropdown-item" href="<?php echo APP . 'produto/listar' ?>">Pedidos</a></li>
+            <li><a class="dropdown-item" href="<?php echo APP . 'pedido/listar' ?>">Pedidos</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -75,7 +75,7 @@
   let produtoCont = localStorage.getItem("Carrinho");
   produtoCont = JSON.parse(produtoCont);
 
-  let contador = produtoCont.length;
+  let contador = produtoCont === null ? 0 : produtoCont.length;
 
   span.innerHTML = contador;
 </script>

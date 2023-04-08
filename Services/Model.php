@@ -62,7 +62,6 @@ abstract class Model
       $sentenca->bindParam(":$chave", $dados[$chave]);
     }
     $sentenca->execute();
-
   }
 
   public function delete($id)
@@ -79,7 +78,7 @@ abstract class Model
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->bindParam(":id", $id);
     $sentenca->execute();
-    $dados = $sentenca->fetch();
+    $dados = $sentenca->fetchAll();
     return $dados;
   }
 
@@ -89,8 +88,9 @@ abstract class Model
 
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->execute();
-    $dados = $sentenca->fetch();
+    $dados = $sentenca->fetchAll();
     return $dados;
   }
+
 }
 ?>

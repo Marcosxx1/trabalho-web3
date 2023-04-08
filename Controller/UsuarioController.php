@@ -20,12 +20,12 @@ class UsuarioController extends Controller
     function novo()
     {
         $usuario = array();
-        $usuario['id'] = $this->idAtual();
-        $usuario['nome'] = "";
-        $usuario['cep'] = "";
-        $usuario['numero_casa'] = "";
-        $usuario['email'] = "";
-        $usuario['senha'] = "";
+        $usuario[0]['id'] = $this->idAtual();
+        $usuario[0]['nome'] = "";
+        $usuario[0]['cep'] = "";
+        $usuario[0]['numero_casa'] = "";
+        $usuario[0]['email'] = "";
+        $usuario[0]['senha'] = "";
 
         $this->view("formUsuario", compact('usuario'));
     }
@@ -46,7 +46,7 @@ class UsuarioController extends Controller
         } else {
             $model->update($usuario);
         }
-        $this->redirect('usuario/listar');
+        $this->redirect('');
     }
 
     function editar($id)
