@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.108.0">
-  <title>Trabalho de Web 3</title>
+  <title>Ecommerce</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-static/">
   <script src="https://kit.fontawesome.com/949dcd6b8d.js" crossorigin="anonymous"></script>

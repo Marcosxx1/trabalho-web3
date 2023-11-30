@@ -10,7 +10,10 @@ abstract class Model
   {
     try {
       $opcoes = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-      $this->conexao = new PDO('pgsql:host=localhost;dbname=TrabalhoWeb3;port=5432', "postgres", "Luizf", $opcoes);
+      $this->conexao = new PDO('pgsql:host=localhost;dbname=TrabalhoWeb3;port=5432', "postgres", "postgres", $opcoes);
+      if ($this->conexao === null) {
+        throw new Exception('Database connection is not set up');
+    }
     } catch (PDOException $e) {
       $this->conexao = null;
     }
@@ -21,6 +24,9 @@ abstract class Model
     if (!isset($dados['id'])) {
       unset($dados['id']);
     }
+    if ($this->conexao === null) {
+      throw new Exception('Database connection is not set up');
+  }
     $chaves = array_keys($dados);
     $campos = implode(", ", $chaves);
     $valores = ":" . implode(", :", $chaves);
@@ -31,17 +37,21 @@ abstract class Model
     }
     $sentenca->execute();
   }
-
   public function read()
   {
-    if ($this->query == "") {
-      $this->query = "SELECT * FROM $this->tabela ORDER BY $this->ordem";
-    }
-    $sentenca = $this->conexao->query($this->query);
-    $sentenca->setFetchMode(PDO::FETCH_ASSOC);
-    $consulta = $sentenca->fetchAll();
-    return $consulta;
+      if ($this->query == "") {
+          $this->query = "SELECT * FROM $this->tabela ORDER BY $this->ordem";
+      }
+      if ($this->conexao === null) {
+          throw new Exception('Database connection is not set up');
+      }
+      $sentenca = $this->conexao->query($this->query);
+      $sentenca->setFetchMode(PDO::FETCH_ASSOC);
+      $consulta = $sentenca->fetchAll();
+      return $consulta;
+      
   }
+  
 
   public function update($dados)
   {
@@ -56,6 +66,9 @@ abstract class Model
         }
       }
     }
+    if ($this->conexao === null) {
+      throw new Exception('Database connection is not set up');
+  }
     $sql = "UPDATE $this->tabela SET $campos WHERE id=:id ";
     $sentenca = $this->conexao->prepare($sql);
     foreach ($chaves as $chave) {
@@ -67,6 +80,9 @@ abstract class Model
 
   public function delete($id)
   {
+    if ($this->conexao === null) {
+      throw new Exception('Database connection is not set up');
+  }
     $sql = "DELETE FROM $this->tabela WHERE id = :id";
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->bindParam(":id", $id);
@@ -75,6 +91,9 @@ abstract class Model
 
   public function getById($id)
   {
+    if ($this->conexao === null) {
+      throw new Exception('Database connection is not set up');
+  }
     $sql = "SELECT * FROM $this->tabela WHERE id = :id"; //2
     $sentenca = $this->conexao->prepare($sql);
     $sentenca->bindParam(":id", $id);
@@ -85,6 +104,9 @@ abstract class Model
 
   function search()
   {
+    if ($this->conexao === null) {
+      throw new Exception('Database connection is not set up');
+  }
     $sql = "SELECT * FROM $this->tabela where nome ilike '%'";
 
     $sentenca = $this->conexao->prepare($sql);

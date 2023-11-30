@@ -1,10 +1,16 @@
 <?php
+$i = 0;
+
 $soma = 0;
-for ($i = 0; $i < count($reviews); $i++) {
-    $soma += $reviews[$i]['avaliacao'];
+$media = 0;
+
+if (count($reviews) > 0) {
+    for ($f = 0; $f < count($reviews); $f++) {
+        $soma += $reviews[$f]['avaliacao'];
+    }
+    $media = intval($soma / count($reviews));
 }
 
-$media = intval($soma / count($reviews));
 ?>
 
 <div class="card mb-3" style="width: 100%;">
@@ -49,8 +55,7 @@ $media = intval($soma / count($reviews));
                 }
                 ?>
 
-                <a href='http://localhost/trabalho-web3/pedido/carrinho/<?php echo $produto['id'] ?>' type="button"
-                    class="btn btn-dark" style="margin: 20% 0 0 35%">Comprar</a>
+                <a href='http://localhost/trabalho-web3/pedido/carrinho/<?php echo $produto['id'] ?>' type="button" class="btn btn-dark" style="margin: 20% 0 0 35%">Comprar</a>
             </div>
         </div>
 
@@ -116,7 +121,7 @@ $media = intval($soma / count($reviews));
 
     let state = 0;
     regularStar.forEach((star) => {
-        star.addEventListener('click', function () {
+        star.addEventListener('click', function() {
             if (star.getAttribute('value') < parseInt(state)) {
                 for (let i = 0; i < regularStar.length; i++) {
                     regularStar[i].classList.remove('fa-solid');

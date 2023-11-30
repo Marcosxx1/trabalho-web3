@@ -6,11 +6,14 @@
     $i = 0;
 
     $soma = 0;
-    for ($f = 0; $f < count($reviews); $f++) {
-        $soma += $reviews[$f]['avaliacao'];
-    }
+    $media = 0;
 
-    $media = intval($soma / count($reviews));
+    if (count($reviews) > 0) { 
+        for ($f = 0; $f < count($reviews); $f++) {
+            $soma += $reviews[$f]['avaliacao'];
+        }
+        $media = intval($soma / count($reviews));        
+    }
 
     foreach ($produtos as $produto) {
         if ($i % 4 == 0) {

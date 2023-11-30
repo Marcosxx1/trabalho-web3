@@ -1,4 +1,5 @@
-<h1 class="text-center mb-5"><i class="fa-solid fa-paw"></i> Produtos para o seu pet <i class="fa-solid fa-paw"></i>
+<h1 class="text-center mb-5"><i class="fa-solid fa-paw"></i> PetZ<i class="fa-solid fa-paw"></i>
+<h1 class="text-center mb-5">Produtos para o seu pet </i>
 </h1>
 
 <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel">
